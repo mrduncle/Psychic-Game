@@ -3,11 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <title>Hangman Game</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
-    <script src="assets/javascript/game.js"></script>
+    <div id="bkgd-content" class="container; w-75 p-3; mx-auto">
+        <div id="page-content">
+            <header>
+                <div class="row justify-content-center">
+                    <h1 class="col-md-6; mx-auto">HANGMAN</h1>
+                </div>
+            </header>
+            <div id="game-content" class="w-50 p-3; mx-auto">
+                <p class="row justify-content-center; text-left; mx-0">
+                    Type letters on your keyboard to guess the word below. Try to do it in as few attempts as
+                    possible before the hangman's noose tightens. 
+                </p>
+                <div id="hangman-graphic">
+                </div>
+                <p class="row justify-content-center">
+                    <h1 id="guess-word" class="text-center">
+                        _ _ _ _ _ _ _ _ _ _ _ _
+                    </h1>
+                </p>
+                <div class="container">
+                    <div class="row">    
+                        <div class="col-md-4">Letters guessed:</div>
+                        <div class="col-md-2">Guesses left:</div>
+                    </div>
 
+                    <div class="row">
+                        <div id="letters-guessed" class="col-md-4">
+                            a, e, i, o, u
+                        </div>
+                        <div id="guess-remain" class="col-md-2">
+                            14
+                        </div>
+                    </div>
+                </div>
+
+                
+
+            </div>
+            <script src="assets/javascript/game.js"></script>
+        </div>
+    </div>
 </body>
 </html>
