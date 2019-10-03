@@ -11,36 +11,36 @@ let playerWins;
 let hangdood = [""
     ,`
      
-                                   
-                                   
-                                   
-                                  
+                                 
                                  
                                 
-                               
-                               
-                               
-                               
-                               
-                               
-                               
-                               
-                               
-                               
-                                 
-                                          
-                                  
-                               
-                               
-                               
-                               
-                               
-                            
+      
+    
+                              
                              
-      
-      
-      
-      
+                             
+                             
+                             
+                             
+                               
+                               
+                               
+                             
+                             
+                               
+                                        
+                                
+                             
+                             
+                             
+                             
+                             
+                          
+                           
+    
+    
+    
+    
 _____________________________________________________`
     ,`
      
@@ -506,20 +506,25 @@ ______|_______________________________________________`
 ______|_______________________________________________`
 ];
 
+// console.log(hangdood[0]);
+// console.log(hangdood[1]);
+// console.log(hangdood[2]);
+// console.log(hangdood[3]);
+// console.log(hangdood[4]);
+// console.log(hangdood[5]);
+// console.log(hangdood[6]);
+// console.log(hangdood[7]);
+// console.log(hangdood[8]);
+// console.log(hangdood[9]);
+// console.log(hangdood[10]);
+// console.log(hangdood[11]);
+// console.log(hangdood[12]);
+// console.log(hangdood[13]);
+// console.log(hangdood[14]);
 
-console.log(hangdood[0]);
-console.log(hangdood[1]);
-console.log(hangdood[2]);
-console.log(hangdood[3]);
-console.log(hangdood[4]);
-console.log(hangdood[5]);
-console.log(hangdood[6]);
-console.log(hangdood[7]);
-console.log(hangdood[8]);
-console.log(hangdood[9]);
-console.log(hangdood[10]);
-console.log(hangdood[11]);
-console.log(hangdood[12]);
-console.log(hangdood[13]);
-console.log(hangdood[14]);
+let testMulti = `Does\n
+                 this\n
+                 work?`
 console.log(hangdood[15]);
+document.getElementById("hangman-graphic").innerHTML=hangdood[1];
+

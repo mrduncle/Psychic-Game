@@ -1,3 +1,5 @@
 #hangman-graphic {
-    height: 300px;
+    white-space: pre-wrap;
+    font-family: monospace;
+    font-size: 0.6em;
 }
