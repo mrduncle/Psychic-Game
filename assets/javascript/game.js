@@ -1,5 +1,47 @@
-let numGuesses = 15;
+const numGuesses = 15;
 let playerWins;
+let wordGuess;
+let allKeyGs = [];
+//let badGuess = [];
+let rtrnArr = [];
+let compArr = [];
+let wordChoice = [
+  "first"
+  ,"worst"
+  ,"exemplary"
+  ,"nightmare"
+  ,"pique"
+  ,"burnt"
+  ,"tight"
+  ,"flog"
+  ,"dog"
+  ,"cocoa"
+  ,"narcissist"
+  ,"deuce"
+  ,"work"
+  ,"pastime"
+  ,"incorrigible"
+  ,"monster"
+  ,"diabolical"
+  ,"park"
+  ,"ocean"
+  ,"river"
+  ,"obfuscate"
+  ,"recompense"
+  ,"beauty"
+  ,"end"
+  ,"mission"
+  ,"stout"
+  ,"Christmas"
+  ,"holiday"
+  ,"birthday"
+  ,"maze"
+  ,"dream"
+  ,"doctor"
+  ,"flay"
+  ,"skeleton"
+  ,""
+]
 
 
 
@@ -522,9 +564,111 @@ ______|_______________________________________________`
 // console.log(hangdood[13]);
 // console.log(hangdood[14]);
 
-let testMulti = `Does\n
-                 this\n
-                 work?`
-console.log(hangdood[15]);
-document.getElementById("hangman-graphic").innerHTML=hangdood[1];
 
+// console.log(hangdood[15]);
+document.getElementById("hangman-graphic").innerHTML = hangdood[15];
+
+
+function randoWord() {
+  let rndWrd = wordChoice[Math.floor(Math.random() * wordChoice.length)];
+  //console.log(rndWrd);
+  return rndWrd;
+}
+
+//function checks if the key pressed is a letter or not using regex.
+function ltrOnly(usrGs) {
+  let letters = /^[A-Za-z]$/;
+  if (usrGs.match(letters)) {
+
+    if (!(allKeyGs.includes(usrGs))) { //add to the all keys guessed array if not guessed before
+      allKeyGs.push(usrGs);
+      return true;
+    }
+    else {  //alert user that the letter has been guessed before
+      alert("Try another letter, you have already guessed '" + usrGs + "'.");
+      return false;
+    }
+  }
+  else {  //alert the user that letters from the alphabet only are acceptable inputs
+    alert("Please choose keys from the alphabet only.");
+    return false;
+  }
+}
+
+//function takes the letter guessed by the user and checks for a match in the selected word
+function ltrMatch(usrGs, badGuess) {
+  let mtchPos = [];
+  for (let i = 0; i < wordGuess.length; i++) {
+    if (usrGs.toLowerCase() === wordGuess.charAt(i)) {
+      mtchPos.push(i);
+      console.log(mtchPos);
+    }
+    else if (!mtchPos.length && i === wordGuess.length - 1) {
+      badGuess.push(usrGs);
+      console.log(badGuess);
+    }
+  }
+  return [mtchPos, badGuess];
+}
+
+//function takes the list of matches and matched letter and fills a display array
+function flMatch(usrGs, mtchPos, compArr) {
+  for (i = 0; i < mtchPos.length; i++) {
+    compArr[mtchPos[i]] = usrGs;
+  }
+  return compArr;
+}
+
+//display the 
+function updateDisplay(wordArray, badGuess) {
+  let wordJoin = wordArray.join(" ");
+  document.getElementById("guess-word").innerHTML = wordJoin;
+  if (badGuess !== undefined) {
+    document.getElementById("letters-guessed").innerHTML = badGuess;
+    document.getElementById("guess-remain").innerHTML = numGuesses - badGuess.length;
+  }
+  else {
+    document.getElementById("letters-guessed").innerHTML = "";
+    document.getElementById("guess-remain").innerHTML = numGuesses;
+  }
+}
+
+function guessWord(wordGuess) {
+  
+}
+
+//starting point for the program: establishes the random word to guess and 
+//displays the dashes for the letters of the word as well as the number of 
+//guesses remaining 
+function wordChoose() {
+  let emptArr = [];
+  wordGuess = randoWord();
+  for (let i = 0; i < wordGuess.length; i++) {
+    emptArr[i] = "_";
+  }
+  updateDisplay(emptArr);
+}
+
+wordChoose();
+//console.log(wordGuess);
+
+
+document.onkeyup = function(evnt) {
+  let usrGs = evnt.key;
+  let badGuess = [];
+  let rtrnArr = [[],[]];
+  let mtchPos = [];
+  if (ltrOnly(usrGs)) { //if key pressed is a letter try and find a match
+    let rtrnArr = ltrMatch(usrGs, badGuess);
+    mtchPos = rtrnArr[0];
+    badGuess = rtrnArr[1];
+  }
+
+  if (rtrnArr[0].length > 0) {  //only add matches if rtrnArr[1] has a length
+    compArr = flMatch(usrGs, rtrnArr[0], compArr);
+  }
+  
+  //update display of the current status of the guesses 
+  updateDisplay(compArr, rtrnArr[1]);
+  
+}

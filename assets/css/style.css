@@ -1,5 +1,8 @@
 #hangman-graphic {
-    white-space: pre-wrap;
+    white-space: pre-wrap; /* this ensures that the white space 
+                            characters (ie new line) behave as
+                            expected*/
     font-family: monospace;
+    font-weight: 900;
     font-size: 0.6em;
 }
