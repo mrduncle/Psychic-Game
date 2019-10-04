@@ -2,8 +2,8 @@ const numGuesses = 15;
 let playerWins;
 let wordGuess;
 let allKeyGs = [];
-//let badGuess = [];
-let rtrnArr = [];
+let badGuess = [];
+let emptArr = [];
 let compArr = [];
 let wordChoice = [
   "first"
@@ -613,7 +613,7 @@ function ltrMatch(usrGs, badGuess) {
 
 //function takes the list of matches and matched letter and fills a display array
 function flMatch(usrGs, mtchPos, compArr) {
-  for (i = 0; i < mtchPos.length; i++) {
+  for (i = 0; i < mtchPos.length; i++) { 
     compArr[mtchPos[i]] = usrGs;
   }
   return compArr;
@@ -621,11 +621,12 @@ function flMatch(usrGs, mtchPos, compArr) {
 
 //display the 
 function updateDisplay(wordArray, badGuess) {
-  let wordJoin = wordArray.join(" ");
-  document.getElementById("guess-word").innerHTML = wordJoin;
+  // let wordJoin = wordArray.join(" ");
+  document.getElementById("guess-word").innerHTML = wordArray.join(" ");
   if (badGuess !== undefined) {
-    document.getElementById("letters-guessed").innerHTML = badGuess;
+    document.getElementById("letters-guessed").innerHTML = badGuess.join(", ");
     document.getElementById("guess-remain").innerHTML = numGuesses - badGuess.length;
+    document.getElementById("hangman-graphic").innerHTML = hangdood[badGuess.length];
   }
   else {
     document.getElementById("letters-guessed").innerHTML = "";
@@ -641,7 +642,6 @@ function guessWord(wordGuess) {
 //displays the dashes for the letters of the word as well as the number of 
 //guesses remaining 
 function wordChoose() {
-  let emptArr = [];
   wordGuess = randoWord();
   for (let i = 0; i < wordGuess.length; i++) {
     emptArr[i] = "_";
@@ -655,7 +655,6 @@ wordChoose();
 
 document.onkeyup = function(evnt) {
   let usrGs = evnt.key;
-  let badGuess = [];
   let rtrnArr = [[],[]];
   let mtchPos = [];
   if (ltrOnly(usrGs)) { //if key pressed is a letter try and find a match
@@ -664,11 +663,17 @@ document.onkeyup = function(evnt) {
     badGuess = rtrnArr[1];
   }
 
-  if (rtrnArr[0].length > 0) {  //only add matches if rtrnArr[1] has a length
-    compArr = flMatch(usrGs, rtrnArr[0], compArr);
+  if (mtchPos.length > 0 && !compArr.length) {  //only add matches if rtrnArr[1] has a length
+    compArr = emptArr;
+    compArr = flMatch(usrGs, mtchPos, compArr);
   }
-  
+  else if (mtchPos.length > 0) {
+    compArr = flMatch(usrGs, mtchPos, compArr);
+  }
+  else if (!compArr.length) {
+    compArr = emptArr;
+  }
   //update display of the current status of the guesses 
-  updateDisplay(compArr, rtrnArr[1]);
+  updateDisplay(compArr, badGuess);
   
 }
