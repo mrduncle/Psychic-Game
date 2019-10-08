@@ -1,8 +1,19 @@
+
+
 #hangman-graphic {
     white-space: pre-wrap; /* this ensures that the white space 
                             characters (ie new line) behave as
                             expected*/
+    height: 350px;
     font-family: monospace;
     font-weight: 900;
     font-size: 0.6em;
+    position: relative;
+}
+
+#result {
+    position: absolute;
+    top: -300px;
+    letter-spacing: 10px;
+    -webkit-transform: rotate(-45deg);
 }

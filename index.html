@@ -6,6 +6,7 @@
     <title>Hangman Game</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
     <div id="bkgd-content" class="container; w-75 p-3; mx-auto">
@@ -20,12 +21,16 @@
                     Type letters on your keyboard to guess the word below. Try to do it in as few attempts as
                     possible before the hangman's noose tightens. 
                 </p>
-
-
-
-
-                
-                <p id="hangman-graphic" class="row justify-content-center"></p>
+                <div class="container">
+                    <div class="row">    
+                        <div class="col-md-6" id="wins">Session wins:</div>
+                        <div class="col-md-6" id="losses">Session losses:</div>
+                    </div>
+                </div>
+                <div id="hangman-container">
+                    <p id="hangman-graphic" class="row justify-content-center"></p>
+                    <h1 id="result"></h1>
+                </div>
                 <p class="row justify-content-center">
                     <h1 id="guess-word" class="text-center">
                         _ _ _ _ _ _ _ _ _ _ _ _
@@ -33,17 +38,10 @@
                 </p>
                 <div class="container">
                     <div class="row">    
-                        <div class="col-md-4">Letters guessed:</div>
-                        <div class="col-md-2">Guesses left:</div>
+                        <div class="col-md-12" id="letters-guessed">Letters guessed: </div>
                     </div>
-
                     <div class="row">
-                        <div id="letters-guessed" class="col-md-4">
-                            a, e, i, o, u
-                        </div>
-                        <div id="guess-remain" class="col-md-2">
-                            14
-                        </div>
+                        <div class="col-md-6" id="guess-remain">Guesses left: </div>
                     </div>
                 </div>
             </div>        
