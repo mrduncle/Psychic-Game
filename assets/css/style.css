@@ -13,7 +13,7 @@
 
 #result {
     position: absolute;
-    top: -300px;
-    letter-spacing: 10px;
+    /* top: 370px; */
+    letter-spacing: 5px;
     -webkit-transform: rotate(-45deg);
 }

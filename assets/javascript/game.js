@@ -2,7 +2,7 @@
 //@ts-check
 
 let emptArr = [];
-const numGuesses = 15;
+const numGuesses = 5;
 let playerWins = 0;
 let wordGuess = "";
 let allKeyGs = [];
@@ -12,48 +12,48 @@ let compArr = [];
 let wins = 0;
 let losses = 0;
 let wordChoice = [
-  // "first"
-  // ,"worst"
-  // ,"exemplary"
-  // ,"nightmare"
-  // ,"pique"
-  // ,"burnt"
-  // ,"tight"
-  // ,"flog"
-  "dog"
-  // ,"cocoa"
-  // ,"narcissist"
-  // ,"deuce"
-  // ,"work"
-  // ,"pastime"
-  // ,"incorrigible"
-  // ,"monster"
-  // ,"diabolical"
-  // ,"park"
-  // ,"ocean"
-  // ,"river"
-  // ,"obfuscate"
-  // ,"recompense"
-  // ,"beauty"
-  // ,"end"
-  // ,"mission"
-  // ,"stout"
-  // ,"Christmas"
-  // ,"holiday"
-  // ,"birthday"
-  // ,"maze"
-  // ,"dream"
-  // ,"doctor"
-  // ,"flay"
-  // ,"skeleton"
-  // ,"genius"
-  // ,"slap"
-  // ,"waterfall"
-  // ,"rapid"
-  // ,"wind"
-  // ,"nowhere"
-  // ,"anyone"
-  // ,"oblivious"
+  "first"
+  ,"worst"
+  ,"exemplary"
+  ,"nightmare"
+  ,"pique"
+  ,"burnt"
+  ,"tight"
+  ,"flog"
+  ,"dog"
+  ,"cocoa"
+  ,"narcissist"
+  ,"deuce"
+  ,"work"
+  ,"pastime"
+  ,"incorrigible"
+  ,"monster"
+  ,"diabolical"
+  ,"park"
+  ,"ocean"
+  ,"river"
+  ,"obfuscate"
+  ,"recompense"
+  ,"beauty"
+  ,"end"
+  ,"mission"
+  ,"stout"
+  ,"Christmas"
+  ,"holiday"
+  ,"birthday"
+  ,"maze"
+  ,"dream"
+  ,"doctor"
+  ,"flay"
+  ,"skeleton"
+  ,"genius"
+  ,"slap"
+  ,"waterfall"
+  ,"rapid"
+  ,"wind"
+  ,"nowhere"
+  ,"anyone"
+  ,"oblivious"
   ,"endurance"
 ]
 
@@ -562,7 +562,7 @@ ______|_______________________________________________`
 ______|_______________________________________________`
 ];
 
-$(document).ready(function(){
+$(document).ready(function() {
   document.getElementById("hangman-graphic").innerHTML = hangdood[15];
 
   function randoWord() {
@@ -654,17 +654,20 @@ $(document).ready(function(){
         wins++;
         document.getElementById("wins").innerHTML = "Session wins: " + wins;
         document.getElementById("result").style.color = "green";
-        document.getElementById("result").innerHTML = "You win!!!!";
+        document.getElementById("result").style.top = "370px";
         document.getElementById("result").style.display = "block";
+        document.getElementById("result").innerHTML = "You win!!!!";
       }
       else if (badGuess.length = numGuesses) {
         losses++;
         document.getElementById("losses").innerHTML = "Session losses: " + losses;
         document.getElementById("result").style.color = "red";
-        document.getElementById("result").innerHTML = "You lose!!!! The word was " + wordGuess + ".";
+        document.getElementById("result").style.top = "250px";
         document.getElementById("result").style.display = "block";
+        document.getElementById("result").innerHTML = "You lose!!!! The word was " + wordGuess + ".";
       }
-      startGame("Do you want to play again?"); //go to function to check if game is to be played again
+      setTimeout(function() { startGame("Do you want to play again?") }, 100);
+      ; //go to function to check if game is to be played again
     }
   }
 
@@ -693,7 +696,7 @@ $(document).ready(function(){
       badGuess = [];
       compArr = [];
       allKeyGs = [];
-      document.getElementById("result").style.display = "block";
+      document.getElementById("result").style.display = "none";
       // document.getElementById("letters-guessed").innerHTML = "Letters guessed: ";
       // document.getElementById("guess-remain").innerHTML = "Guesses left: " + numGuesses;
       wordChoose();
@@ -702,7 +705,6 @@ $(document).ready(function(){
       alert("Thank you for playing, please close the browser page.");
     }
   }
-
 
   startGame("Do you wish to start playing?");
 
@@ -732,7 +734,6 @@ $(document).ready(function(){
       updateDisplay(compArr, badGuess);
       
       setTimeout(function() { assessGame(isNewLetter, usrGs) }, 0);
-      //assessGame(isNewLetter);
     }
   }
 })
