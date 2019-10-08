@@ -2,7 +2,7 @@
 //@ts-check
 
 let emptArr = [];
-const numGuesses = 5;
+const numGuesses = 15;
 let playerWins = 0;
 let wordGuess = "";
 let allKeyGs = [];
