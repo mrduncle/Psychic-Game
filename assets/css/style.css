@@ -15,5 +15,6 @@
     position: absolute;
     /* top: 370px; */
     letter-spacing: 5px;
+    text-align: center;
     -webkit-transform: rotate(-45deg);
 }
