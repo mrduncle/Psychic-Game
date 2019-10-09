@@ -32,13 +32,13 @@ let wordChoice = [
   ,"park"
   ,"ocean"
   ,"river"
-  ,"obfuscate"
-  ,"recompense"
+  ,"pleasant"
+  ,"doggy"
   ,"beauty"
   ,"end"
   ,"mission"
   ,"stout"
-  ,"Christmas"
+  ,"christmas"
   ,"holiday"
   ,"birthday"
   ,"maze"
@@ -684,7 +684,8 @@ $(document).ready(function() {
       }
     }
     //populate the array with the correct number of empty elements
-    for (let j = 0; j < wordGuess.length; j++) {
+    for (let j = 0; j < wordGuess.length; j++) {  //populates emptArr with ["_", "_", "_", ...] up to 
+                                                  //the number of characters in wordGuess
       emptArr[j] = "_";
     }
     updateDisplay(emptArr);
